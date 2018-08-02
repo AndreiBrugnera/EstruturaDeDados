@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8"/>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+	<title>test</title>
+	<script type="text/javascript">
+		
+	
+
+	</script>
+</head>
+<body>
+ 
+	<div id="minhadiv">
+		
+    </div>
+    
+    <input id="meuInput" value="2" placeholder="Ola digite aqui seu etxtro" type="text" />
+    <button onclick="validar()">JOGAR</button>
+
+    <script type="text/javascript">
+		
+        var elemento = document.getElementById("minhadiv");
+        elemento.innerHTML= "Palmeiras não tem mundial";
+
+        var outroelemento = document.createElement("h1");
+        outroelemento.innerHTML = "Meu titulo";
+        
+        elemento.appendChild(outroelemento);
+        //console.log(elemento);
+
+        //RECEBE O VALOR DO INPUT
+        var input = document.getElementById("meuInput");
+        valor = input.value;
+       
+       //Substitui variavel de cima pelo valor.
+        valor = input.value = 3;
+	
+        console.log(valor);
+	</script>
+ 
+</body>
+</html>
