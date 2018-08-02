@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Jogo da Velha</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            .box_jogo{
+                max-width:500px;
+                margin:0 auto;
+                display:flex;
+                flex-wrap: wrap;
+                justify-content:center;
+                background:#f3f3f3;
+                border-radius:5px;
+                padding:0 2% 2% 2%;
+            }
+            .box_jogo img{
+                width:30px;
+                height:30px;
+            }
+            .box_jogo h1{
+                width:100%;
+                text-align:center;
+                font-family:Verdana, Geneva, sans-serif;
+                font-weight:600;
+            }
+            .box_jogo h6{
+                width:100%;
+                text-align:center;
+                font-family:Verdana, Geneva, sans-serif;
+                font-weight:400;
+                font-size:18px;
+            }
+            .box_jogo div{
+                min-width:150px;
+                min-height:150px;
+                display:flex;
+                flex-direction: column;
+                justify-content:center;
+                align-items: center;
+                font-size:70px;
+                color:#00cccc;
+                border:2px solid #c9c9c9;
+                background:rgba(255, 255, 255, 0.8);
+                font-family:Verdana, Geneva, sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <section class="box_jogo" id="mostrador">
+            <h1>Jogo da Velha <br><small>Aluno: Andrei V. Brugnera</small></h1>
+
+            <h6>Jogador da vez: <img src="x.png"></h6>
+
+            <div id="a1" class="box" jogo=""></div>
+            <div id="a2" class="box" jogo=""></div>
+            <div id="a3" class="box" jogo=""></div>
+            <div id="b1" class="box" jogo=""></div>
+            <div id="b2" class="box" jogo=""></div>
+            <div id="b3" class="box" jogo=""></div>
+            <div id="c1" class="box" jogo=""></div>
+            <div id="c2" class="box" jogo=""></div>
+            <div id="c3" class="box" jogo=""></div>
+        </section>
+
+        <script type="text/javascript">
+
+            const player1 = "X";
+            const player2 = "0";
+
+            var jogadorDaVez = player1;
+            var fimDeJogo = false;
+
+            atualizarQuemJoga();
+            inicializaBlocos();
+
+            function atualizarQuemJoga() {
+                if (fimDeJogo) {
+                    return;
+                }
+
+                if (jogadorDaVez == player1) {
+                    var player = document.querySelectorAll("section#mostrador img")[0];
+                    player.setAttribute("src", "x.png");
+                } else {
+                    var player = document.querySelectorAll("section#mostrador img")[0];
+                    player.setAttribute("src", "o.png");
+                }
+            }
+
+
+            function inicializaBlocos() {
+                var box = document.getElementsByClassName("box");
+                for (var i = 0; i < box.length; i++) {
+                    box[i].addEventListener("click", function () {
+
+                        if (fimDeJogo) {
+                            return;
+                        }
+
+                        if (this.getElementsByTagName("img").length == 0) {
+
+                            if (jogadorDaVez == player1) {
+                                this.innerHTML = "<img src='x.png' />";
+                                this.setAttribute("jogo", player1);
+                                jogadorDaVez = player2;
+
+                            } else {
+                                this.innerHTML = "<img src='o.png' />";
+                                this.setAttribute("jogo", player2);
+                                jogadorDaVez = player1;
+                            }
+                        }
+                        atualizarQuemJoga();
+                        verificarVencedor();
+
+                    });
+                }
+
+            }
+
+            function verificarVencedor(){
+                
+                var a1 = document.getElementById("a1").getAttribute("jogo");
+                var a2 = document.getElementById("a2").getAttribute("jogo");
+                var a3 = document.getElementById("a3").getAttribute("jogo");
+                var b1 = document.getElementById("b1").getAttribute("jogo");
+                var b2 = document.getElementById("b2").getAttribute("jogo");
+                var b3 = document.getElementById("b3").getAttribute("jogo");
+                var c1 = document.getElementById("c1").getAttribute("jogo");
+                var c2 = document.getElementById("c2").getAttribute("jogo");
+                var c3 = document.getElementById("c3").getAttribute("jogo");
+                
+                var ganhador = "";
+                
+                if(((a1 == b1 && a1 == c1) || (a1 == a2 && a1 == a3) || (a1 == b2 && a1 == c3 )) && a1 != ""){
+                    ganhador = a1;
+                } else if((b2 == b1 && b2 == b3 && b2 != "") || (b2 == a2 && b2 == c2 && b2 != "") || (b2 == a3 && b2 == c1 && b2 != "")){
+                    ganhador == b2;
+                }else if(((c3 == c2 && c3 == c1) || (c3 == a3 && c3 == b3)) && c3 != ""){
+                    ganhador = c3;
+                }
+                
+                if(ganhador != ""){
+                    fimDeJogo = true;
+                    alert("O ganhador foi o '" + ganhador + "'");
+                }
+                
+            }
+
+        </script>
+    </body>
+</html>
