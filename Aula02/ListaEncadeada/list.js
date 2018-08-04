@@ -21,7 +21,6 @@ function LinkedList() {
             while (current.next) {
                 current = current.next
             }
-            
             current.previous = node;
             current.next = node;
         }
