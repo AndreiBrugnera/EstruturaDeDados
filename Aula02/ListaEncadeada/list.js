@@ -3,6 +3,7 @@ function LinkedList() {
     let Node = function (element) {
         this.element = element;
         this.next = null;
+        this.previous = null;
     }
 
     let lenght = 0;
@@ -20,6 +21,8 @@ function LinkedList() {
             while (current.next) {
                 current = current.next
             }
+            
+            current.previous = node;
             current.next = node;
         }
         lenght++;
@@ -34,6 +37,7 @@ function LinkedList() {
                 index = 0;
             if (position === 0) { //adiciona na primeira posição
                 // SEU CÓDIGO AQUI, o próximo recebe o atual e head recebe o novo nó
+                node.previous = null;
                 node.next = current;
                 head = node;
             } else {
