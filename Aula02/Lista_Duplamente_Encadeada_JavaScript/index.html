@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie-edge">
+        <title>Lista Duplamente Encadeada</title>
+    </head>
+    <body>
+        <script src="scripts.js"></script>
+        <script>
+
+            alert("LiStA DuPlAmEnTe EnCaDeAda");
+            var listaDupla = new ListeaDuplamenteEnc(5);
+            alert(listaDupla.add(6));
+            alert(listaDupla.add(4));
+            alert(listaDupla.add(7));
+            alert(listaDupla.busca(5).chave);
+            alert(listaDupla.busca(6).chave);
+            //remove um elemento do final
+            alert(listaDupla.remove(7));
+            //remove um elemento do meio
+            alert(listaDupla.remove(6));
+            //remove um elemento do inicio
+            alert(listaDupla.remove(5));
+            //busca um elemento que ja foi removido
+            alert(listaDupla.busca(5));
+            //tenta remover um elemento inexistente ( ja foi removido)
+            alert(listaDupla.remove(5));
+            //remove o unico elemento da lista (primeiro e ultimo)
+            alert(listaDupla.remove(4));
+            //Adicionando a Resposta para tudo numa lista vazia
+            alert(listaDupla.add(42));
+        </script>
+
+    </body>
+    
+</html>
+</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+/*Projeto baseado na aplicação desenvolvida por Luis Felipe de Paula Costa disponível para consulta no link a seguir: 
+<a href="https://github.com/LuPeBreak/Listas_em_Javascript/commit/79971b6e9801995af9681e5ca1ac8bd5c6d250d7" target="_blank"> Clique aqui.</a>*/
